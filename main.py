@@ -61,7 +61,6 @@ def is_superprime(n):
 def test_is_superprime():
     assert is_superprime(233) is True
     assert is_superprime(237) is False
-    #assert is_superprime(237) is True
 
 def main():
     test_is_prime()

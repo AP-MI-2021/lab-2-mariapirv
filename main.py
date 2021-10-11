@@ -1,6 +1,7 @@
 def printMenu():
     print("1.Determină dacă un număr dat este palindrom.")
     print("2.Determină dacă un număr este superprim: dacă toate prefixele sale sunt prime.")
+    print("3.Determina cel mai mare numar prim, mai mic decat un numar dat.")
     print("x. Iesire")
 
 def is_palindrome(n):
@@ -62,10 +63,25 @@ def test_is_superprime():
     assert is_superprime(233) is True
     assert is_superprime(237) is False
 
+def get_largest_prime_below(n):
+    '''
+    determina cel mai mare numar prim mai mic decat n
+    :param n: nr intreg
+    :return: cel mai mare nr prim mai mic decat n
+    '''
+    for i in range(n-1,1,-1):
+        if is_prime(i) is True:
+            return i
+
+def test_get_largest_prime_below():
+    assert get_largest_prime_below(3) == 2
+    assert get_largest_prime_below(10) == 7
+
 def main():
     test_is_prime()
     test_is_superprime()
     test_is_palindrome()
+    test_get_largest_prime_below()
     while True:
         printMenu()
         n = int(input("Dati un numar: "))
@@ -74,6 +90,8 @@ def main():
             print (is_palindrome(n))
         elif optiune == "2":
             print (is_superprime(n))
+        elif optiune == "3":
+                print("Cel mai mare numar prim este: ",get_largest_prime_below(n))
         elif optiune == "x":
             break
         else:
